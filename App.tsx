@@ -1,20 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect } from 'react';
+import { StatusBar, View, StyleSheet } from 'react-native';
+import MainScreen from './screens/mainScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import AddItemScreen from './screens/addItemScreen';
+import StockScreen from './screens/stockScreen';
 
-export default function App() {
+const Stack = createStackNavigator();
+
+const App = () => {
+  useEffect(() => {
+    // Any initialization code or side effects can be placed here
+    // For example, you can fetch data, set up subscriptions, etc.
+  }, []);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <StatusBar barStyle="dark-content" />
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="MainScreen" component={MainScreen} />
+          <Stack.Screen name="addItemScreen" component={AddItemScreen} />
+          <Stack.Screen name="stockScreen" component={StockScreen} />
+          {/* ... Other screens */}
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
