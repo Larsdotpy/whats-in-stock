@@ -1,124 +1,116 @@
-import React from 'react';
-import { View, StyleSheet, TextInput, TouchableOpacity, Text, Dimensions, Image } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { AntDesign } from '@expo/vector-icons';
+import React, { useEffect, useState } from 'react';
+import { View, StyleSheet, Text, TextInput } from 'react-native';
+import { useFonts } from 'expo-font';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const ShoppingListScreen = () => {
-  const navigation = useNavigation();
+const ShoppingListScreen: React.FC = () => {
+  const [fontsLoaded] = useFonts({
+    IndieFlower: require('whats_in_stock/assets/fonts/IndieFlower-Regular.ttf'),
+  });
+  const [noteText, setNoteText] = useState('');
+
+  useEffect(() => {
+    retrieveNoteText();
+  }, []);
+
+  const retrieveNoteText = async () => {
+    try {
+      const value = await AsyncStorage.getItem('noteText');
+      if (value !== null) {
+        setNoteText(value);
+      }
+    } catch (error) {
+      console.log('Error retrieving note text:', error);
+    }
+  };
+
+  const saveNoteText = async (text: string) => {
+    try {
+      await AsyncStorage.setItem('noteText', text);
+    } catch (error) {
+      console.log('Error saving note text:', error);
+    }
+  };
+
+  if (!fontsLoaded) {
+    return null; // or render a loading indicator
+  }
 
   return (
     <View style={styles.container}>
-      <View>
-        <Text style={styles.textMain}>Fill in the details and save your item, so others can see it in stock!</Text>
-        <Text style={styles.textMain2}>Shop and link are optional.</Text>
+      <View style={styles.header}>
+        <Text style={styles.title}>Shopping List</Text>
       </View>
 
-      <View style={styles.gridContainer}>
-        <View style={styles.gridItem}>
-          <TextInput
-            style={styles.gridText}
-            placeholder="Add product name"
-          />
-        </View>
-        <View style={styles.gridItem}>
-          <TextInput
-            style={styles.gridText}
-            placeholder="Add desired quantity"
-          />
-        </View>
-        <View style={styles.gridItem}>
-          <TextInput
-            style={styles.gridText}
-            placeholder="Add shop"
-          />
-        </View>
-        <View style={styles.gridItem}>
-          <TextInput
-            style={styles.gridText}
-            placeholder="Add optional product link"
-          />
-        </View>
-      </View>
-
-      <View style={styles.imageContainer}>
-        <Image
-          source={require('whats_in_stock/assets/trolley.png')}
-          style={styles.image}
-        />
-
-        <Image
-          source={require('whats_in_stock/assets/diet.png')}
-          style={styles.image}
-        />
-
-        <Image
-          source={require('whats_in_stock/assets/store.png')}
-          style={styles.image}
+      <View style={styles.notepadContainer}>
+        <TextInput
+          style={styles.notepad}
+          value={noteText}
+          placeholder="Write your notes here..."
+          multiline
+          numberOfLines={10}
+          onChangeText={(text) => {
+            setNoteText(text);
+            saveNoteText(text);
+          }}
         />
       </View>
 
+      {/* Rest of the code */}
     </View>
   );
 };
 
-const screenWidth = Dimensions.get('window').width;
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
-    alignItems: 'center',
+    padding: 16,
+    backgroundColor: '#FFFFFF',
   },
-  gridContainer: {
-    marginTop: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
+  header: {
+    borderBottomWidth: 2,
+    borderColor: '#111111',
+    paddingBottom: 16,
+    marginBottom: 20,
   },
-  gridItem: {
-    width: screenWidth - 40,
-    height: (screenWidth - 180) / 4,
-    backgroundColor: 'white',
-    padding: 10,
-    borderRadius: 10,
+  title: {
+    fontSize: 32,
+    fontWeight: '700',
+    letterSpacing: 0.1,
+    fontFamily: 'IndieFlower',
+  },
+  notepadContainer: {
+    flex: 1,
     borderWidth: 2,
-    borderColor: 'black',
-    justifyContent: 'center',
-    alignItems: 'flex-start', // Align text to the left
+    borderColor: '#111111',
     marginBottom: 20,
+    padding: 10,
   },
-  gridItemText: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: 'black',
-    textAlign: 'center',
+  notepad: {
+    flex: 1,
+    fontSize: 18,
+    fontFamily: 'IndieFlower',
   },
-  textMain: {
-    textAlign: 'center',
-    fontSize: 20,
-    marginTop: 50,
-    marginBottom: 20,
+  categoryContainer: {
+    marginBottom: 28,
   },
-  textMain2: {
-    textAlign: 'center',
-    fontSize: 15,
-    fontStyle: 'italic',
-    marginTop: 10,
-    marginBottom: 50
+  category: {
+    fontSize: 24,
+    fontWeight: '700',
+    marginBottom: 6,
+    borderBottomWidth: 2,
+    borderColor: '#111111',
+    fontFamily: 'IndieFlower',
   },
-  gridText: {
-    fontSize: 20,
-    textAlign: 'left', // Align text to the left
+  listContainer: {
+    paddingLeft: 16,
+    marginBottom: 16,
   },
-  imageContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-  },
-  image: {
-    width: 100,
-    height: 100,
-    marginLeft: 10,
-    marginRight: 10,
-    marginTop: 50
+  listItem: {
+    fontSize: 18,
+    marginBottom: 6,
+    counterReset: 'listCounter',
+    fontFamily: 'IndieFlower',
   },
 });
 

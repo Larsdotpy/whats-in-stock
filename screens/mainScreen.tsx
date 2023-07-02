@@ -15,6 +15,16 @@ const MainScreen = () => {
     navigation.navigate('stockScreen');
   };
 
+  const navigateToDeleteItemScreen = () => {
+    navigation.navigate('deleteItemScreen');
+  };
+
+  const navigateToShoppingListScreen = () => {
+    navigation.navigate('shoppingListScreen');
+  };
+ 
+
+
   return (
     <View style={styles.container}>
 
@@ -46,6 +56,7 @@ const MainScreen = () => {
           </View>
         </TouchableOpacity>
 
+        <TouchableOpacity onPress={navigateToDeleteItemScreen}>
         <View style={styles.gridItem}>
           <View style={styles.gridItemBox}>
             <Text style={styles.gridItemText}>Delete item</Text>
@@ -54,7 +65,9 @@ const MainScreen = () => {
             </View>
           </View>
         </View>
+        </TouchableOpacity>
 
+        <TouchableOpacity onPress={navigateToShoppingListScreen}>
         <View style={styles.gridItem}>
           <View style={styles.gridItemBox}>
             <Text style={styles.gridItemText}>Shopping list</Text>
@@ -63,6 +76,8 @@ const MainScreen = () => {
             </View>
           </View>
         </View>
+        </TouchableOpacity>
+
         <TouchableOpacity onPress={navigateToStockScreen}>
         <View style={styles.gridItem}>
           <View style={styles.gridItemBox}>
