@@ -9,35 +9,19 @@ const DeleteItemScreen = () => {
   return (
     <View style={styles.container}>
       <View>
-        <Text style={styles.textMain}>Fill in the details and save your item, so others can see it in stock!</Text>
-        <Text style={styles.textMain2}>Shop and link are optional.</Text>
+        <Text style={styles.textMain}>Perhaps you made a typo or would just like to delete an item from the stock,
+        fill out the details below to successfully remove an item.
+        </Text>
       </View>
 
       <View style={styles.gridContainer}>
         <View style={styles.gridItem}>
           <TextInput
             style={styles.gridText}
-            placeholder="Add product name"
+            placeholder="Product name"
           />
         </View>
-        <View style={styles.gridItem}>
-          <TextInput
-            style={styles.gridText}
-            placeholder="Add desired quantity"
-          />
-        </View>
-        <View style={styles.gridItem}>
-          <TextInput
-            style={styles.gridText}
-            placeholder="Add shop"
-          />
-        </View>
-        <View style={styles.gridItem}>
-          <TextInput
-            style={styles.gridText}
-            placeholder="Add optional product link"
-          />
-        </View>
+        
       </View>
 
       <View style={styles.imageContainer}>

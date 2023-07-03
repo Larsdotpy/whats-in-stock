@@ -10,15 +10,24 @@ const AddItemScreen = () => {
     <View style={styles.container}>
       <View>
         <Text style={styles.textMain}>Fill in the details and save your item, so others can see it in stock!</Text>
-        <Text style={styles.textMain2}>Shop and link are optional.</Text>
       </View>
 
+      <Text style={styles.title}>Required</Text>
       <View style={styles.gridContainer}>
+        <View style={styles.gridImageContainer}>
+          <Image source={require('whats_in_stock/assets/product-design.png')} style={styles.gridImage} />
+        </View>
         <View style={styles.gridItem}>
           <TextInput
             style={styles.gridText}
             placeholder="Add product name"
           />
+        </View>
+      </View>
+
+      <View style={styles.gridContainer}>
+        <View style={styles.gridImageContainer}>
+          <Image source={require('whats_in_stock/assets/trolley.png')} style={styles.gridImage} />
         </View>
         <View style={styles.gridItem}>
           <TextInput
@@ -26,37 +35,40 @@ const AddItemScreen = () => {
             placeholder="Add desired quantity"
           />
         </View>
+      </View>
+
+      <View style={styles.separationLine}></View>
+
+      <Text style={styles.title2}>Optional</Text>
+      <View style={styles.gridContainer}>
+        <View style={styles.gridImageContainer}>
+          <Image source={require('whats_in_stock/assets/store.png')} style={styles.gridImage} />
+        </View>
         <View style={styles.gridItem}>
           <TextInput
             style={styles.gridText}
             placeholder="Add shop"
           />
         </View>
+      </View>
+
+      <View style={styles.gridContainer}>
+        <View style={styles.gridImageContainer}>
+          <Image source={require('whats_in_stock/assets/external-link.png')} style={styles.gridImage} />
+        </View>
         <View style={styles.gridItem}>
           <TextInput
             style={styles.gridText}
-            placeholder="Add optional product link"
+            placeholder="Add product link"
           />
-        </View>
+        </View>        
       </View>
 
-      <View style={styles.imageContainer}>
-        <Image
-          source={require('whats_in_stock/assets/trolley.png')}
-          style={styles.image}
-        />
-
-        <Image
-          source={require('whats_in_stock/assets/diet.png')}
-          style={styles.image}
-        />
-
-        <Image
-          source={require('whats_in_stock/assets/store.png')}
-          style={styles.image}
-        />
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.button} onPress={() => console.log('Button pressed!, IMPLEMENT FIREBASE LOGIC HERE')}>
+          <Text style={styles.buttonText}>Add Item</Text>
+        </TouchableOpacity>
       </View>
-
     </View>
   );
 };
@@ -69,13 +81,20 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignItems: 'center',
   },
+  textMain: {
+    textAlign: 'center',
+    fontSize: 20,
+    marginTop: 50,
+    marginBottom: 20,
+  },
   gridContainer: {
     marginTop: 20,
     justifyContent: 'center',
     alignItems: 'center',
+    flexDirection: 'row', // Align items horizontally
   },
   gridItem: {
-    width: screenWidth - 40,
+    width: screenWidth - 40 - 24 - 10, // Take remaining space after image and margin
     height: (screenWidth - 180) / 4,
     backgroundColor: 'white',
     padding: 10,
@@ -83,42 +102,61 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: 'black',
     justifyContent: 'center',
-    alignItems: 'flex-start', // Align text to the left
+    alignItems: 'flex-start',
     marginBottom: 20,
   },
-  gridItemText: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: 'black',
-    textAlign: 'center',
+  gridImageContainer: {
+    width: 24,
+    height: (screenWidth - 180) / 4,
+    marginRight: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 25,
   },
-  textMain: {
-    textAlign: 'center',
-    fontSize: 20,
-    marginTop: 50,
-    marginBottom: 20,
-  },
-  textMain2: {
-    textAlign: 'center',
-    fontSize: 15,
-    fontStyle: 'italic',
-    marginTop: 10,
-    marginBottom: 50
+  gridImage: {
+    width: 35,
+    height: (screenWidth - 250) / 4,
+    marginRight: 10
   },
   gridText: {
     fontSize: 20,
-    textAlign: 'left', // Align text to the left
+    textAlign: 'left',
   },
-  imageContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
+  buttonContainer: {
+    position: 'absolute',
+    bottom: 50,
+    width: '100%',
+    alignItems: 'center',
   },
-  image: {
-    width: 100,
-    height: 100,
-    marginLeft: 10,
-    marginRight: 10,
-    marginTop: 50
+  button: {
+    backgroundColor: '#7F00FF',
+    padding: 10,
+    borderRadius: 5,
+    width: 200,
+    height: 50,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  title: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    marginTop: 20,
+  },
+  title2: {
+    fontWeight: 'bold',
+    fontSize: 20,
+    marginTop: 20,
+  },
+  separationLine: {
+    borderBottomWidth: 2,
+    borderBottomColor: 'black',
+    width: '100%',
+    marginTop: 20,
+    marginBottom: 20,
   },
 });
 
