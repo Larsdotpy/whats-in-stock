@@ -1,46 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, TextInput, TouchableOpacity, Text, Dimensions, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { AntDesign } from '@expo/vector-icons';
+import FastImage from 'react-native-fast-image';
 
 const DeleteItemScreen = () => {
   const navigation = useNavigation();
+  const [showGif, setShowGif] = useState(false); // State to toggle showing the GIF
+
+  const handleDeleteItem = () => {
+    setShowGif(true); // Show the GIF when the 'delete item' button is pressed
+
+    // Implement your Firebase logic here
+    // Once the deletion is complete, you can hide the GIF by setting setShowGif(false)
+    // For simplicity, let's assume the deletion takes 3 seconds and then hide the GIF.
+    setTimeout(() => {
+      setShowGif(false);
+    }, 3000);
+  };
 
   return (
     <View style={styles.container}>
       <View>
-        <Text style={styles.textMain}>Perhaps you made a typo or would just like to delete an item from the stock,
-        fill out the details below to successfully remove an item.
+        <Text style={styles.textMain}>
+          Perhaps you made a typo or would just like to delete an item from the current stock,
+          fill out the details below to successfully remove an item.
         </Text>
       </View>
 
       <View style={styles.gridContainer}>
         <View style={styles.gridItem}>
-          <TextInput
-            style={styles.gridText}
-            placeholder="Product name"
+          <TextInput style={styles.gridText} placeholder="Name of the item to delete" />
+        </View>
+      </View>
+
+      {showGif && (
+        <View style={styles.gifContainer}>
+          <FastImage
+            style={styles.gif}
+            resizeMode={FastImage.resizeMode.contain}
+            source={require('whats_in_stock/assets/68673-deleted.gif')}
+            autoPlay
           />
         </View>
-        
+      )}
+
+      <Image source={require('whats_in_stock/assets/recycle-bin.png')} style={styles.image} />
+
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.button} onPress={handleDeleteItem}>
+          <Text style={styles.buttonText}>Delete Item</Text>
+        </TouchableOpacity>
       </View>
-
-      <View style={styles.imageContainer}>
-        <Image
-          source={require('whats_in_stock/assets/trolley.png')}
-          style={styles.image}
-        />
-
-        <Image
-          source={require('whats_in_stock/assets/diet.png')}
-          style={styles.image}
-        />
-
-        <Image
-          source={require('whats_in_stock/assets/store.png')}
-          style={styles.image}
-        />
-      </View>
-
     </View>
   );
 };
@@ -78,16 +88,12 @@ const styles = StyleSheet.create({
   },
   textMain: {
     textAlign: 'center',
-    fontSize: 20,
-    marginTop: 50,
-    marginBottom: 20,
-  },
-  textMain2: {
-    textAlign: 'center',
-    fontSize: 15,
     fontStyle: 'italic',
-    marginTop: 10,
-    marginBottom: 50
+    fontSize: 20,
+    marginTop: 40,
+    marginBottom: 20,
+    paddingLeft: 10,
+    paddingRight: 10
   },
   gridText: {
     fontSize: 20,
@@ -98,12 +104,39 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   image: {
-    width: 100,
-    height: 100,
+    width: 200,
+    height: 200,
     marginLeft: 10,
     marginRight: 10,
     marginTop: 50
   },
+  buttonContainer: {
+    position: 'absolute',
+    bottom: 50,
+    width: '100%',
+    alignItems: 'center',
+  },
+  button: {
+    backgroundColor: '#880808',
+    padding: 10,
+    borderRadius: 5,
+    width: 200,
+    height: 50,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  gifContainer:{
+    width: 100,
+    height: 100
+  },
+  gif: {
+    width: 100,
+    height: 100
+  }
 });
 
 export default DeleteItemScreen;
