@@ -4,7 +4,8 @@
 ![Simulator Screen Shot - iPhone 14 Pro - 2023-07-01 at 12 10 52](https://github.com/Larsdotpy/whats-in-stock/assets/103534528/132d4ab9-0e21-45eb-83f0-e32313d005e4)
 
 ## Add item screen
-![Simulator Screen Shot - iPhone 14 Pro - 2023-07-01 at 12 11 09](https://github.com/Larsdotpy/whats-in-stock/assets/103534528/cb540307-491f-49ef-a7ae-c36bfed758a3)
+![Simulator Screen Shot - iPhone 14 Pro - 2023-07-03 at 11 00 42](https://github.com/Larsdotpy/whats-in-stock/assets/103534528/62f1014b-36e0-41bb-b584-7c8b5c135ef6)
+
 
 
 ## Current stock screen
