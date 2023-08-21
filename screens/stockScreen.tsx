@@ -1,5 +1,7 @@
-import React from 'react';
+import { onSnapshot } from 'firebase/firestore';
+import React, { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { productsCollection } from '../lib/controller';
 
 
 const StockScreen: React.FC = () => {

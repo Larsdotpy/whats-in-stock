@@ -1,23 +1,12 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, TextInput, TouchableOpacity, Text, Dimensions, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import FastImage from 'react-native-fast-image';
+import { apiDeleteCall } from '../utils/DeleteCall';
+
 
 const DeleteItemScreen = () => {
   const navigation = useNavigation();
-  const [showGif, setShowGif] = useState(false); // State to toggle showing the GIF
-
-  const handleDeleteItem = () => {
-    setShowGif(true); // Show the GIF when the 'delete item' button is pressed
-
-    // Implement your Firebase logic here
-    // Once the deletion is complete, you can hide the GIF by setting setShowGif(false)
-    // For simplicity, let's assume the deletion takes 3 seconds and then hide the GIF.
-    setTimeout(() => {
-      setShowGif(false);
-    }, 3000);
-  };
-
+  
   return (
     <View style={styles.container}>
       <View>
@@ -33,21 +22,10 @@ const DeleteItemScreen = () => {
         </View>
       </View>
 
-      {showGif && (
-        <View style={styles.gifContainer}>
-          <FastImage
-            style={styles.gif}
-            resizeMode={FastImage.resizeMode.contain}
-            source={require('whats_in_stock/assets/68673-deleted.gif')}
-            autoPlay
-          />
-        </View>
-      )}
-
       <Image source={require('whats_in_stock/assets/recycle-bin.png')} style={styles.image} />
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={handleDeleteItem}>
+        <TouchableOpacity style={styles.button} onPress={() => apiDeleteCall()}>
           <Text style={styles.buttonText}>Delete Item</Text>
         </TouchableOpacity>
       </View>

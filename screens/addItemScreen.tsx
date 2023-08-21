@@ -1,8 +1,12 @@
 import React from 'react';
 import { View, StyleSheet, TextInput, TouchableOpacity, Text, Dimensions, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { AntDesign } from '@expo/vector-icons';
+import { apiPostCall } from '../utils/PostCall';
+/////////////////
 
+
+
+/////////////
 const AddItemScreen = () => {
   const navigation = useNavigation();
 
@@ -65,7 +69,7 @@ const AddItemScreen = () => {
       </View>
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={() => console.log('Button pressed!, IMPLEMENT FIREBASE LOGIC HERE')}>
+        <TouchableOpacity style={styles.button} onPress={() => apiPostCall()}>
           <Text style={styles.buttonText}>Add Item</Text>
         </TouchableOpacity>
       </View>
