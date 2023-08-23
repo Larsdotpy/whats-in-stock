@@ -1,12 +1,8 @@
 import React from 'react';
-import { View, StyleSheet, TextInput, TouchableOpacity, Text, Dimensions, Image } from 'react-native';
+import { View, StyleSheet, TextInput, TouchableOpacity, Text, Dimensions, Image, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { apiPostCall } from '../utils/PostCall';
-/////////////////
 
-
-
-/////////////
 const AddItemScreen = () => {
   const navigation = useNavigation();
 
@@ -82,7 +78,7 @@ const screenWidth = Dimensions.get('window').width;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor:'white',
     alignItems: 'center',
   },
   textMain: {

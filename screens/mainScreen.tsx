@@ -2,7 +2,6 @@ import React from 'react';
 import { View, StyleSheet, TextInput, TouchableOpacity, Text, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign, MaterialIcons } from '@expo/vector-icons';
-import AddItemScreen from './addItemScreen';
 
 const MainScreen = () => {
   const navigation = useNavigation();

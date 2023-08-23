@@ -3,10 +3,15 @@ import { View, StyleSheet, TextInput, TouchableOpacity, Text, Dimensions, Image 
 import { useNavigation } from '@react-navigation/native';
 import { apiDeleteCall } from '../utils/DeleteCall';
 
-
 const DeleteItemScreen = () => {
   const navigation = useNavigation();
-  
+  const [itemName, setItemName] = useState(""); // Initialize the state for the item name
+
+  const handleDelete = () => {
+    // Use the itemName state when making the API delete call
+    apiDeleteCall(itemName);
+  };
+
   return (
     <View style={styles.container}>
       <View>
@@ -18,14 +23,19 @@ const DeleteItemScreen = () => {
 
       <View style={styles.gridContainer}>
         <View style={styles.gridItem}>
-          <TextInput style={styles.gridText} placeholder="Name of the item to delete" />
+          <TextInput
+            style={styles.gridText}
+            placeholder="Name of the item to delete"
+            value={itemName}
+            onChangeText={setItemName} // Update the itemName state
+          />
         </View>
       </View>
 
       <Image source={require('whats_in_stock/assets/recycle-bin.png')} style={styles.image} />
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={() => apiDeleteCall()}>
+        <TouchableOpacity style={styles.button} onPress={handleDelete}>
           <Text style={styles.buttonText}>Delete Item</Text>
         </TouchableOpacity>
       </View>

@@ -1,9 +1,9 @@
 const jsonData =
   {
-    "pindakaas":"test",
-    "Amount": 1,
-    "Shop": "Jumbo",
-    "Link": null
+    "productType":"Boter",
+    "Amount": 0,
+    "Shop": "Albert Heijn",
+    "Link": "www.ah.nl/boter"
   };
 
 export function apiPostCall(){

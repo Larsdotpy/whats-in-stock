@@ -1,14 +1,24 @@
-const endpointUrl = 'http://localhost:3000/products';
+const endpointUrl = 'http://localhost:3000/products?productType=';
 
-export function apiDeleteCall(){
-  fetch(endpointUrl + "/1", { //Kunnen verwijderen op productnaam en niet op ID!
+export function apiDeleteCall(productType: string) {
+  const requestData = {
     method: 'DELETE',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
     },
-    //body: JSON.stringify(jsonData)
-  })
-    .then(response => response.json())
+  };
+
+  fetch(endpointUrl + productType, requestData)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Handle successful response here, if needed
+      console.log('Item deleted:', data);
+    })
     .catch(error => {
       console.error('Error:', error);
     });
