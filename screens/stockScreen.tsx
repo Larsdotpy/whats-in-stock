@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { View, Text, FlatList, StyleSheet, TextInput } from 'react-native';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -52,14 +52,58 @@ const App = () => {
     </View>
   );
 
+  const [shopFilter, setShopFilter] = useState<string>('');
+  const [amountFilter, setAmountFilter] = useState<number | null>(null);
+  const [searchText, setSearchText] = useState<string>('');
+
+
+
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>What's in stock?</Text>
-      <FlatList
-        data={products}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id.toString()}
+      <View style={styles.searchContainer}>
+      <TextInput
+        style={styles.searchBar}
+        placeholder="Search product"
+        value={searchText}
+        onChangeText={setSearchText}
       />
+      </View>
+    <View style={styles.filterRow}>
+      <Text style={styles.filterText}>Filter by shop</Text>
+        <TextInput
+          style={styles.filterInput}
+          placeholder="Enter shop name"
+          value={shopFilter}
+          onChangeText={setShopFilter}
+          />
+      </View>
+      <View style={styles.filterRow}>
+      <Text style={styles.filterText}>Filter by amount</Text>
+        <TextInput
+          style={styles.filterInput}
+          placeholder="Enter amount"
+          value={amountFilter !== null ? amountFilter.toString() : ''}
+          onChangeText={(text) => setAmountFilter(text !== '' ? parseFloat(text) : null)}
+          keyboardType="numeric"
+        />
+      </View>
+      <FlatList
+  data={products.filter((item) => {
+    if (shopFilter && !item.Shop.toLowerCase().includes(shopFilter.toLowerCase())) {
+      return false;
+    }
+    if (amountFilter !== null && item.Amount !== amountFilter) {
+      return false;
+    }
+    if (searchText && !item.productType.toLowerCase().includes(searchText.toLowerCase())) {
+      return false;
+    }
+    return true;
+  })}
+  renderItem={renderItem}
+  keyExtractor={(item) => item.id.toString()}
+/>
+
     </View>
   );
 };
@@ -107,7 +151,37 @@ const styles = StyleSheet.create({
   },
   blueText: {
     color: 'blue'
-  }
+  },
+  searchContainer: {
+    paddingVertical: 10,
+  },
+  searchBar: {
+    width: '100%',
+    height: 40,
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    marginBottom: 20,
+  },
+  filterRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  filterText: {
+    flex: 1,
+    marginRight: 10,
+    fontWeight: 'bold',
+  },
+  filterInput: {
+    flex: 2,
+    height: 40,
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 8,
+    paddingHorizontal: 10,
+  },
 });
 
 export default App;

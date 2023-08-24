@@ -34,15 +34,6 @@ const MainScreen = () => {
             />
         </View>
 
-
-
-      <View style={styles.searchContainer}>
-        <TextInput
-          style={styles.searchBar}
-          placeholder="Search product"
-        />
-      </View>
-
       <View style={styles.gridContainer}>
         <TouchableOpacity onPress={navigateToAddItemScreen}>
           <View style={styles.gridItem}>
@@ -102,18 +93,6 @@ const styles = StyleSheet.create({
   Image: {
     width: 150,
     height: 150
-  },
-  searchContainer: {
-    paddingVertical: 10,
-  },
-  searchBar: {
-    width: 300,
-    height: 40,
-    borderWidth: 1,
-    borderColor: 'gray',
-    borderRadius: 8,
-    paddingHorizontal: 10,
-    marginBottom: 20,
   },
   gridContainer: {
     flexDirection: 'column',

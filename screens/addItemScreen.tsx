@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, TextInput, TouchableOpacity, Text, Dimensions, Image, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { apiPostCall } from '../utils/PostCall';
 
+
 const AddItemScreen = () => {
   const navigation = useNavigation();
 
+  const [productType, setProductType] = useState('');
+  const [amount, setAmount] = useState('');
+  const [shop, setShop] = useState('');
+  const [link, setLink] = useState('');
+
+  const [productTypeValid, setProductTypeValid] = useState(false);
+  const [amountValid, setAmountValid] = useState(false);
+
   return (
     <View style={styles.container}>
-      <View>
-        <Text style={styles.textMain}>Fill in the details and save your item, so others can see it in stock!</Text>
-      </View>
 
-      <Text style={styles.title}>Required</Text>
-      <View style={styles.gridContainer}>
         <View style={styles.gridImageContainer}>
           <Image source={require('whats_in_stock/assets/product-design.png')} style={styles.gridImage} />
         </View>
@@ -21,11 +25,15 @@ const AddItemScreen = () => {
           <TextInput
             style={styles.gridText}
             placeholder="Add product name"
+            value={productType}
+            onChangeText={text => {
+              setProductType(text);
+              setProductTypeValid(text.trim() !== ''); // Update validation state
+            }}
           />
         </View>
-      </View>
+      
 
-      <View style={styles.gridContainer}>
         <View style={styles.gridImageContainer}>
           <Image source={require('whats_in_stock/assets/trolley.png')} style={styles.gridImage} />
         </View>
@@ -33,40 +41,57 @@ const AddItemScreen = () => {
           <TextInput
             style={styles.gridText}
             placeholder="Add desired quantity"
+            value={amount}
+            onChangeText={text => {
+              // Allow only numbers and empty string
+              if (/^\d*$/.test(text) || text === '') {
+                setAmount(text);
+                setAmountValid(text.trim() !== ''); // Update validation state
+              }
+            }}
+            keyboardType="numeric"
           />
         </View>
-      </View>
+      
 
-      <View style={styles.separationLine}></View>
 
-      <Text style={styles.title2}>Optional</Text>
-      <View style={styles.gridContainer}>
         <View style={styles.gridImageContainer}>
           <Image source={require('whats_in_stock/assets/store.png')} style={styles.gridImage} />
         </View>
         <View style={styles.gridItem}>
           <TextInput
             style={styles.gridText}
-            placeholder="Add shop"
+            placeholder="Add shop (optional)"
+            value={shop}
+            onChangeText={text => setShop(text)}
           />
         </View>
-      </View>
 
-      <View style={styles.gridContainer}>
         <View style={styles.gridImageContainer}>
           <Image source={require('whats_in_stock/assets/external-link.png')} style={styles.gridImage} />
         </View>
         <View style={styles.gridItem}>
           <TextInput
             style={styles.gridText}
-            placeholder="Add product link"
+            placeholder="Add product link (optional)"
+            value={link}
+            onChangeText={text => setLink(text)}
           />
         </View>        
-      </View>
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={() => apiPostCall()}>
-          <Text style={styles.buttonText}>Add Item</Text>
+        <TouchableOpacity style={styles.button} onPress={() => {
+          if (productTypeValid && amountValid) {
+            apiPostCall(productType, amount, shop, link);
+          } else {
+          // Show alert that required fields are not filled
+          alert('Please fill in the required fields.');
+          }
+        }}>
+          <View style={styles.buttonContent}>
+            <Text style={styles.buttonText}>Add Item</Text>
+            <Image source={require('whats_in_stock/assets/add-button.png')} style={styles.buttonImage} />
+          </View>
         </TouchableOpacity>
       </View>
     </View>
@@ -86,12 +111,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginTop: 50,
     marginBottom: 20,
-  },
-  gridContainer: {
-    marginTop: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row', // Align items horizontally
   },
   gridItem: {
     width: screenWidth - 40 - 24 - 10, // Take remaining space after image and margin
@@ -114,9 +133,9 @@ const styles = StyleSheet.create({
     marginBottom: 25,
   },
   gridImage: {
-    width: 35,
-    height: (screenWidth - 250) / 4,
-    marginRight: 10
+    width: 60,
+    height: (screenWidth - 250) / 2.5,
+    marginTop: 20
   },
   gridText: {
     fontSize: 20,
@@ -124,32 +143,9 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     position: 'absolute',
-    bottom: 50,
+    top: 630,
     width: '100%',
     alignItems: 'center',
-  },
-  button: {
-    backgroundColor: '#50C878',
-    padding: 10,
-    borderRadius: 5,
-    width: 200,
-    height: 50,
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  title: {
-    fontWeight: 'bold',
-    fontSize: 20,
-    marginTop: 20,
-  },
-  title2: {
-    fontWeight: 'bold',
-    fontSize: 20,
-    marginTop: 20,
   },
   separationLine: {
     borderBottomWidth: 2,
@@ -157,6 +153,31 @@ const styles = StyleSheet.create({
     width: '100%',
     marginTop: 20,
     marginBottom: 20,
+  },
+  button: {
+    backgroundColor: '#50C878',
+    padding: 10,
+    borderRadius: 5,
+    width: 200,
+    height: 50,
+    justifyContent: 'center', // Center content vertically
+    alignItems: 'center', // Center content horizontally
+  },
+  buttonContent: {
+    flexDirection: 'row', // Align items horizontally
+    justifyContent: 'center', // Center items horizontally
+    alignItems: 'center', // Center items vertically
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginRight: 10, // Add spacing between text and image
+  },
+  buttonImage: {
+    width: 30,
+    height: 30,
   },
 });
 
