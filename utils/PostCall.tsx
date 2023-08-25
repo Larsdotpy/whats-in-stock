@@ -1,5 +1,5 @@
 export function apiPostCall(productType: string, amount: string, shop: string, link: string) {
-  const endpointUrl = 'http://localhost:3000/products';
+  const endpointUrl = 'http://lars.detestbaas.nl:3000/products';
   
   const jsonData = {
     productType: productType,

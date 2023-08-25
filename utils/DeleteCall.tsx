@@ -1,4 +1,4 @@
-const endpointUrl = 'http://localhost:3000/products?productType=';
+const endpointUrl = 'http://lars.detestbaas.nl:3000?productType=';
 
 export function apiDeleteCall(productType: string) {
   const requestData = {

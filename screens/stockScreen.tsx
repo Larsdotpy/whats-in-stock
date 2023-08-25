@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, StyleSheet, TextInput } from 'react-native';
+import { Swipeable } from 'react-native-gesture-handler';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -20,7 +21,7 @@ const App = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/products');
+      const response = await axios.get('http://lars.detestbaas.nl:3000/products');
       const data = response.data;
       setProducts(data);
 
@@ -56,6 +57,8 @@ const App = () => {
   const [amountFilter, setAmountFilter] = useState<number | null>(null);
   const [searchText, setSearchText] = useState<string>('');
 
+  
+  
 
 
   return (
