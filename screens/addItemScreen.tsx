@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { View, StyleSheet, TextInput, TouchableOpacity, Text, Dimensions, Image, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { apiPostCall } from '../utils/PostCall';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const AddItemScreen = () => {
-  const navigation = useNavigation();
-
   const [productType, setProductType] = useState('');
   const [amount, setAmount] = useState('');
   const [shop, setShop] = useState('');
@@ -16,19 +15,35 @@ const AddItemScreen = () => {
   const [successMessageVisible, setSuccessMessageVisible] = useState(false); // State for controlling the success message
   const handleAddItem = () => {
     if (productTypeValid && amountValid) {
-      apiPostCall(productType, amount, shop, link);
-      setSuccessMessageVisible(true);
-      setTimeout(() => {
-        setSuccessMessageVisible(false);
-        setProductType(''); // Reset productType input field
-        setAmount(''); // Reset amount input field
-        setShop(''); // Reset shop input field
-        setLink(''); // Reset link input field
-      }, 2000);
+      AsyncStorage.getItem('products')
+        .then((data) => {
+          if (data) {
+            const products = JSON.parse(data);
+            const existingProduct = products.find((product: { productType: string; }) => product.productType === productType);
+  
+            if (existingProduct) {
+              alert('Warning: This product is already in stock. Are you sure you want to add?');
+            } else {
+              apiPostCall(productType, amount, shop, link);
+              setSuccessMessageVisible(true);
+              setTimeout(() => {
+                setSuccessMessageVisible(false);
+                setProductType('');
+                setAmount('');
+                setShop('');
+                setLink('');
+              }, 2000);
+            }
+          }
+        })
+        .catch((error) => {
+          console.error('Error fetching data from AsyncStorage:', error);
+        });
     } else {
       alert('Please fill in the required fields.');
     }
   };
+  
   
 
 

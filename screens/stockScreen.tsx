@@ -4,7 +4,6 @@ import { Swipeable } from 'react-native-gesture-handler';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { apiDeleteCall } from '../utils/DeleteCall';
-import { link } from 'fs';
 
 interface Product {
     productType: string;
