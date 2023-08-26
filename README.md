@@ -24,8 +24,9 @@ HomeStock empowers you to take control of your household management, minimize wa
 Experience the convenience and harmony that HomeStock brings to your household. Download now and embark on a new era of stress-free inventory management and shopping.
 
 ## Main screen
-![Simulator Screen Shot - iPhone 14 Pro - 2023-08-26 at 13 55 54](https://github.com/Larsdotpy/whats-in-stock/assets/103534528/667ec31a-4d57-4af6-a40e-2fafaed35ff6 =500x500)
+![Simulator Screen Shot - iPhone 14 Pro - 2023-08-26 at 13 55 54](https://github.com/Larsdotpy/whats-in-stock/assets/103534528/667ec31a-4d57-4af6-a40e-2fafaed35ff6)
 
+<img src="[main screen](https://github.com/Larsdotpy/whats-in-stock/assets/103534528/667ec31a-4d57-4af6-a40e-2fafaed35ff6)" width="250 height="250">
 
 ## Add item screen
 ![Simulator Screen Shot - iPhone 14 Pro - 2023-08-26 at 13 56 58](https://github.com/Larsdotpy/whats-in-stock/assets/103534528/d8ee59b4-7361-403c-b352-62bf7593a798)
