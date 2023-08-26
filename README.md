@@ -26,7 +26,7 @@ Experience the convenience and harmony that HomeStock brings to your household. 
 ## Main screen
 ![Simulator Screen Shot - iPhone 14 Pro - 2023-08-26 at 13 55 54](https://github.com/Larsdotpy/whats-in-stock/assets/103534528/667ec31a-4d57-4af6-a40e-2fafaed35ff6)
 
-<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/667ec31a-4d57-4af6-a40e-2fafaed35ff6" width="250" height="250">
+<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/667ec31a-4d57-4af6-a40e-2fafaed35ff6" width="350" height="500">
 
 ## Add item screen
 ![Simulator Screen Shot - iPhone 14 Pro - 2023-08-26 at 13 56 58](https://github.com/Larsdotpy/whats-in-stock/assets/103534528/d8ee59b4-7361-403c-b352-62bf7593a798)
