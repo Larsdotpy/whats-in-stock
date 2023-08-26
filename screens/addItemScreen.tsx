@@ -11,89 +11,101 @@ const AddItemScreen = () => {
   const [amount, setAmount] = useState('');
   const [shop, setShop] = useState('');
   const [link, setLink] = useState('');
-
   const [productTypeValid, setProductTypeValid] = useState(false);
   const [amountValid, setAmountValid] = useState(false);
+  const [successMessageVisible, setSuccessMessageVisible] = useState(false); // State for controlling the success message
+  const handleAddItem = () => {
+    if (productTypeValid && amountValid) {
+      apiPostCall(productType, amount, shop, link);
+      setSuccessMessageVisible(true);
+      setTimeout(() => {
+        setSuccessMessageVisible(false);
+      }, 2000);
+    } else {
+      alert('Please fill in the required fields.');
+    }
+  };
+
 
   return (
     <View style={styles.container}>
 
-        <View style={styles.gridImageContainer}>
-          <Image source={require('whats_in_stock/assets/product-design.png')} style={styles.gridImage} />
-        </View>
-        <View style={styles.gridItem}>
-          <TextInput
-            style={styles.gridText}
-            placeholder="Add product name"
-            value={productType}
-            onChangeText={text => {
-              setProductType(text);
-              setProductTypeValid(text.trim() !== ''); // Update validation state
-            }}
-          />
-        </View>
-      
-
-        <View style={styles.gridImageContainer}>
-          <Image source={require('whats_in_stock/assets/trolley.png')} style={styles.gridImage} />
-        </View>
-        <View style={styles.gridItem}>
-          <TextInput
-            style={styles.gridText}
-            placeholder="Add desired quantity"
-            value={amount}
-            onChangeText={text => {
-              // Allow only numbers and empty string
-              if (/^\d*$/.test(text) || text === '') {
-                setAmount(text);
-                setAmountValid(text.trim() !== ''); // Update validation state
-              }
-            }}
-            keyboardType="numeric"
-          />
-        </View>
-      
+      <View style={styles.gridImageContainer}>
+        <Image source={require('whats_in_stock/assets/product-design.png')} style={styles.gridImage} />
+      </View>
+      <View style={styles.gridItem}>
+        <TextInput
+          style={styles.gridText}
+          placeholder="Add product name"
+          value={productType}
+          onChangeText={text => {
+            setProductType(text);
+            setProductTypeValid(text.trim() !== ''); // Update validation state
+          }}
+        />
+      </View>
 
 
-        <View style={styles.gridImageContainer}>
-          <Image source={require('whats_in_stock/assets/store.png')} style={styles.gridImage} />
-        </View>
-        <View style={styles.gridItem}>
-          <TextInput
-            style={styles.gridText}
-            placeholder="Add shop (optional)"
-            value={shop}
-            onChangeText={text => setShop(text)}
-          />
-        </View>
+      <View style={styles.gridImageContainer}>
+        <Image source={require('whats_in_stock/assets/trolley.png')} style={styles.gridImage} />
+      </View>
+      <View style={styles.gridItem}>
+        <TextInput
+          style={styles.gridText}
+          placeholder="Add desired quantity"
+          value={amount}
+          onChangeText={text => {
+            // Allow only numbers and empty string
+            if (/^\d*$/.test(text) || text === '') {
+              setAmount(text);
+              setAmountValid(text.trim() !== ''); // Update validation state
+            }
+          }}
+          keyboardType="numeric"
+        />
+      </View>
 
-        <View style={styles.gridImageContainer}>
-          <Image source={require('whats_in_stock/assets/external-link.png')} style={styles.gridImage} />
-        </View>
-        <View style={styles.gridItem}>
-          <TextInput
-            style={styles.gridText}
-            placeholder="Add product link (optional)"
-            value={link}
-            onChangeText={text => setLink(text)}
-          />
-        </View>        
+
+
+      <View style={styles.gridImageContainer}>
+        <Image source={require('whats_in_stock/assets/store.png')} style={styles.gridImage} />
+      </View>
+      <View style={styles.gridItem}>
+        <TextInput
+          style={styles.gridText}
+          placeholder="Add shop (optional)"
+          value={shop}
+          onChangeText={text => setShop(text)}
+        />
+      </View>
+
+      <View style={styles.gridImageContainer}>
+        <Image source={require('whats_in_stock/assets/external-link.png')} style={styles.gridImage} />
+      </View>
+      <View style={styles.gridItem}>
+        <TextInput
+          style={styles.gridText}
+          placeholder="Add product link (optional)"
+          value={link}
+          onChangeText={text => setLink(text)}
+        />
+      </View>
 
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={() => {
-          if (productTypeValid && amountValid) {
-            apiPostCall(productType, amount, shop, link);
-          } else {
-          // Show alert that required fields are not filled
-          alert('Please fill in the required fields.');
-          }
-        }}>
+        <TouchableOpacity style={styles.button} onPress={handleAddItem}>
           <View style={styles.buttonContent}>
             <Text style={styles.buttonText}>Add Item</Text>
             <Image source={require('whats_in_stock/assets/add-button.png')} style={styles.buttonImage} />
           </View>
         </TouchableOpacity>
       </View>
+
+
+      {successMessageVisible && (
+        <View style={styles.successMessage}>
+          <Text style={styles.successMessageText}>Item added successfully</Text>
+        </View>
+      )}
     </View>
   );
 };
@@ -103,7 +115,7 @@ const screenWidth = Dimensions.get('window').width;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:'white',
+    backgroundColor: 'white',
     alignItems: 'center',
   },
   textMain: {
@@ -179,6 +191,21 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
   },
+  successMessage: {
+    position: 'absolute',
+    top: '30%',
+    backgroundColor: 'rgba(80, 200, 120, 0.8)',
+    padding: 10,
+    borderRadius: 5,
+    width: 220,
+    alignItems: 'center',
+  },
+  successMessageText: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  }
 });
 
 export default AddItemScreen;

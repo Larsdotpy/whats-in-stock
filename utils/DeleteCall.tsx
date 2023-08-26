@@ -1,6 +1,6 @@
-const endpointUrl = 'http://lars.detestbaas.nl:3000?productType=';
+const endpointUrl = 'http://lars.detestbaas.nl:3000/products';
 
-export function apiDeleteCall(productType: string) {
+export function apiDeleteCall(id: string) {
   const requestData = {
     method: 'DELETE',
     headers: {
@@ -8,7 +8,7 @@ export function apiDeleteCall(productType: string) {
     },
   };
 
-  fetch(endpointUrl + productType, requestData)
+  fetch(endpointUrl + "/" + id, requestData)
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');

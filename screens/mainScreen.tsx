@@ -14,10 +14,6 @@ const MainScreen = () => {
     navigation.navigate('stockScreen');
   };
 
-  const navigateToDeleteItemScreen = () => {
-    navigation.navigate('deleteItemScreen');
-  };
-
   const navigateToShoppingListScreen = () => {
     navigation.navigate('shoppingListScreen');
   };
@@ -44,17 +40,6 @@ const MainScreen = () => {
               </View>
             </View>
           </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={navigateToDeleteItemScreen}>
-        <View style={styles.gridItem}>
-          <View style={styles.gridItemBox}>
-            <Text style={styles.gridItemText}>Delete item</Text>
-            <View style={styles.iconContainer}>
-              <AntDesign name="delete" size={24} color="black" />
-            </View>
-          </View>
-        </View>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={navigateToShoppingListScreen}>
@@ -92,7 +77,8 @@ const styles = StyleSheet.create({
   },
   Image: {
     width: 150,
-    height: 150
+    height: 150,
+    bottom: 50
   },
   gridContainer: {
     flexDirection: 'column',
