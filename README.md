@@ -24,15 +24,27 @@ HomeStock empowers you to take control of your household management, minimize wa
 Experience the convenience and harmony that HomeStock brings to your household. Download now and embark on a new era of stress-free inventory management and shopping.
 
 ## Main screen
-![Simulator Screen Shot - iPhone 14 Pro - 2023-08-26 at 13 55 54](https://github.com/Larsdotpy/whats-in-stock/assets/103534528/667ec31a-4d57-4af6-a40e-2fafaed35ff6)
+![Simulator Screen Shot - iPhone 14 Pro - 2023-08-26 at 13 55 54](https://github.com/Larsdotpy/whats-in-stock/assets/103534528/667ec31a-4d57-4af6-a40e-2fafaed35ff6 =500x500)
 
 
 ## Add item screen
 ![Simulator Screen Shot - iPhone 14 Pro - 2023-08-26 at 13 56 58](https://github.com/Larsdotpy/whats-in-stock/assets/103534528/d8ee59b4-7361-403c-b352-62bf7593a798)
 
+![Simulator Screen Shot - iPhone 14 Pro - 2023-08-26 at 16 16 43](https://github.com/Larsdotpy/whats-in-stock/assets/103534528/a339d1cc-672e-4b12-88cb-c100e27ec2bd)
+
 
 ## Current stock screen
-![Simulator Screen Shot - iPhone 14 Pro - 2023-08-26 at 14 04 33](https://github.com/Larsdotpy/whats-in-stock/assets/103534528/e9ee8f92-cc7a-4a2a-9967-2551f85349df)
+![Simulator Screen Shot - iPhone 14 Pro - 2023-08-26 at 16 17 26](https://github.com/Larsdotpy/whats-in-stock/assets/103534528/fb4b5292-1cc4-48a0-b3fe-911a5978d419)
+
+### Filtering by shop
+![Simulator Screen Shot - iPhone 14 Pro - 2023-08-26 at 16 18 02](https://github.com/Larsdotpy/whats-in-stock/assets/103534528/14f85d22-13ec-47b9-98e4-3e879e684539)
+
+### Filtering by quantity
+![Simulator Screen Shot - iPhone 14 Pro - 2023-08-26 at 16 18 46](https://github.com/Larsdotpy/whats-in-stock/assets/103534528/cf26ac55-d77b-4488-80e8-1d8ca5614337)
+
+### Filtering by product name
+![Simulator Screen Shot - iPhone 14 Pro - 2023-08-26 at 16 19 29](https://github.com/Larsdotpy/whats-in-stock/assets/103534528/8ad4f093-6132-4cf2-9572-ef7c525311bd)
+
 
 ## Shopping list screen
 
