@@ -4,7 +4,6 @@ import { Swipeable } from 'react-native-gesture-handler';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { apiDeleteCall } from '../utils/DeleteCall';
-import { link } from 'fs';
 
 interface Product {
     productType: string;
@@ -58,8 +57,7 @@ const App = () => {
         const handleLinkPress = async () => {
             if (item.Link) {
                 let linkToOpen = item.Link;
-                if (!linkToOpen.startsWith('http://') && !linkToOpen.startsWith('https://')
-                && !linkToOpen.startsWith('Http://') && !linkToOpen.startsWith('Https://')) {
+                if (!linkToOpen.startsWith('http://') && !linkToOpen.startsWith('https://')) {
                     // Add 'https://' if the link doesn't start with http:// or https://
                     linkToOpen = 'https://' + linkToOpen;
                 }

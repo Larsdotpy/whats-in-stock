@@ -20,11 +20,16 @@ const AddItemScreen = () => {
       setSuccessMessageVisible(true);
       setTimeout(() => {
         setSuccessMessageVisible(false);
+        setProductType(''); // Reset productType input field
+        setAmount(''); // Reset amount input field
+        setShop(''); // Reset shop input field
+        setLink(''); // Reset link input field
       }, 2000);
     } else {
       alert('Please fill in the required fields.');
     }
   };
+  
 
 
   return (
