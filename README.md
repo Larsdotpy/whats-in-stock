@@ -1,4 +1,4 @@
-# HomeStock
+![Simulator Screen Shot - iPhone 14 Pro - 2023-08-27 at 16 12 34](https://github.com/Larsdotpy/whats-in-stock/assets/103534528/28cdd03c-a689-4a08-b52c-83a7bbdace6c)# HomeStock
 Introducing HomeStock: Your Ultimate Household Inventory and Shopping Companion
 
 HomeStock is a revolutionary application designed to streamline your household management by effortlessly tracking your inventory and simplifying your shopping experience. With HomeStock, keeping an organized record of your household items, whether they're perishable goods, cleaning supplies, toiletries, or other essentials, has never been easier.
@@ -22,6 +22,11 @@ Key Features:
 HomeStock empowers you to take control of your household management, minimize waste, and optimize your shopping routine. It's not just an app; it's your reliable household assistant that enhances communication, reduces the likelihood of oversights, and brings efficiency to every aspect of your home.
 
 Experience the convenience and harmony that HomeStock brings to your household. Download now and embark on a new era of stress-free inventory management and shopping.
+
+## Login screen
+As of now, only authenticated users are allowed access.
+<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/37f584d7-489c-46dd-9e27-a7cc73a5d01b" width="500" height="1000">
+
 
 ## Main screen
 <img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/667ec31a-4d57-4af6-a40e-2fafaed35ff6" width="500" height="1000">
