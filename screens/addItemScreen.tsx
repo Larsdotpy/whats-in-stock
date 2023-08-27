@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, TextInput, TouchableOpacity, Text, Dimensions, Image, ImageBackground } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { View, StyleSheet, TextInput, TouchableOpacity, Text, Dimensions, Image, Alert } from 'react-native';
 import { apiPostCall } from '../utils/PostCall';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 
 const AddItemScreen = () => {
   const [productType, setProductType] = useState('');
@@ -12,17 +10,41 @@ const AddItemScreen = () => {
   const [link, setLink] = useState('');
   const [productTypeValid, setProductTypeValid] = useState(false);
   const [amountValid, setAmountValid] = useState(false);
-  const [successMessageVisible, setSuccessMessageVisible] = useState(false); // State for controlling the success message
+  const [successMessageVisible, setSuccessMessageVisible] = useState(false);
+
   const handleAddItem = () => {
     if (productTypeValid && amountValid) {
       AsyncStorage.getItem('products')
         .then((data) => {
           if (data) {
             const products = JSON.parse(data);
-            const existingProduct = products.find((product: { productType: string; }) => product.productType === productType);
-  
+            const existingProduct = products.find((product) => product.productType === productType);
+
             if (existingProduct) {
-              alert('Warning: This product is already in stock. Are you sure you want to add?');
+              Alert.alert(
+                'Warning',
+                'This product is already in stock. Are you sure you want to add?',
+                [
+                  {
+                    text: 'Yes',
+                    onPress: () => {
+                      apiPostCall(productType, amount, shop, link);
+                      setSuccessMessageVisible(true);
+                      setTimeout(() => {
+                        setSuccessMessageVisible(false);
+                        setProductType('');
+                        setAmount('');
+                        setShop('');
+                        setLink('');
+                      }, 2000);
+                    },
+                  },
+                  {
+                    text: 'No',
+                    style: 'cancel',
+                  },
+                ]
+              );
             } else {
               apiPostCall(productType, amount, shop, link);
               setSuccessMessageVisible(true);
@@ -57,7 +79,7 @@ const AddItemScreen = () => {
         <TextInput
           style={styles.gridText}
           placeholder="Add product name"
-          value={productType}
+          value={productType.toLowerCase()}
           onChangeText={text => {
             setProductType(text);
             setProductTypeValid(text.trim() !== ''); // Update validation state
