@@ -42,17 +42,13 @@ As of now, only authenticated users are allowed access.
 <img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/9d28ce3f-7dca-437a-b5b6-e8dc765e4231">
 
 ## Current stock screen
-<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/fb4b5292-1cc4-48a0-b3fe-911a5978d419">
+<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/b3b8c06a-7f04-424d-97aa-c08ac7270141">
 
 ### Filtering by shop
-<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/14f85d22-13ec-47b9-98e4-3e879e684539">
+<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/41f874e7-f3a2-4c13-b38a-1b07eb712e1e">
 
 ### Filtering by quantity
-<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/cf26ac55-d77b-4488-80e8-1d8ca5614337">
+<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/7bccdfb4-f27a-47c7-b490-41a25af40901">
 
 ### Filtering by product name
-<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/8ad4f093-6132-4cf2-9572-ef7c525311bd">
-
-
-
-
+<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/c071b971-245d-4b5a-aab8-c944bbea91b2">
