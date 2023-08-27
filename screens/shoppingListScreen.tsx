@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, Text, TextInput } from 'react-native';
 import { useFonts } from 'expo-font';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/native';
 
 const ShoppingListScreen: React.FC = () => {
   const [fontsLoaded] = useFonts({
@@ -12,6 +13,13 @@ const ShoppingListScreen: React.FC = () => {
   useEffect(() => {
     retrieveNoteText();
   }, []);
+
+  const navigation = useNavigation();
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: false, // Hide the header for this screen
+    });
+  }, [navigation]);
 
   const retrieveNoteText = async () => {
     try {
@@ -46,7 +54,7 @@ const ShoppingListScreen: React.FC = () => {
         <TextInput
           style={styles.notepad}
           value={noteText}
-          placeholder="Write your notes here..."
+          placeholder="Write your notes here..."      
           multiline
           numberOfLines={10}
           onChangeText={(text) => {
@@ -56,7 +64,6 @@ const ShoppingListScreen: React.FC = () => {
         />
       </View>
 
-      {/* Rest of the code */}
     </View>
   );
 };
@@ -83,24 +90,13 @@ const styles = StyleSheet.create({
     flex: 1,
     borderWidth: 2,
     borderColor: '#111111',
-    marginBottom: 20,
+    marginBottom: 0,
     padding: 10,
   },
   notepad: {
     flex: 1,
     fontSize: 18,
-    fontFamily: 'IndieFlower',
-  },
-  categoryContainer: {
-    marginBottom: 28,
-  },
-  category: {
-    fontSize: 24,
-    fontWeight: '700',
-    marginBottom: 6,
-    borderBottomWidth: 2,
-    borderColor: '#111111',
-    fontFamily: 'IndieFlower',
+    fontFamily: 'IndieFlower'
   },
   listContainer: {
     paddingLeft: 16,

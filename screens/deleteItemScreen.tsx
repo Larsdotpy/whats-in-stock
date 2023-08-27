@@ -7,6 +7,12 @@ const DeleteItemScreen = () => {
   const navigation = useNavigation();
   const [itemName, setItemName] = useState(""); // Initialize the state for the item name
 
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: false, // Hide the header for this screen
+    });
+  }, [navigation]);
+
   const handleDelete = () => {
     // Use the itemName state when making the API delete call
     apiDeleteCall(itemName);

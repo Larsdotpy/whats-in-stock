@@ -4,6 +4,7 @@ import { Swipeable } from 'react-native-gesture-handler';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { apiDeleteCall } from '../utils/DeleteCall';
+import { useNavigation } from '@react-navigation/native';
 
 interface Product {
   productType: string;
@@ -21,6 +22,13 @@ const App = () => {
   const [amountFilter, setAmountFilter] = useState<number | null>(null);
   const [searchText, setSearchText] = useState<string>('');
 
+  const navigation = useNavigation();
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: false, // Hide the header for this screen
+    });
+  }, [navigation]);
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -29,7 +37,7 @@ const App = () => {
     try {
       const response = await axios.get('http://lars.detestbaas.nl:3000/products');
       const data = response.data;
-      const filteredData = data.filter(item => !item.hasOwnProperty('users'));
+      const filteredData = data.filter((item: { hasOwnProperty: (arg0: string) => any; }) => !item.hasOwnProperty('users'));
       setProducts(filteredData);
       await AsyncStorage.setItem('products', JSON.stringify(filteredData));
     } catch (error) {

@@ -1,13 +1,17 @@
-// MainScreen.tsx
 import React, { useState } from 'react';
 import { View, StyleSheet, TextInput, TouchableOpacity, Text, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign, MaterialIcons } from '@expo/vector-icons';
-import LoginScreen from './loginScreen'; // Import your LoginScreen component
+import LoginScreen from './loginScreen';
 
 const MainScreen = () => {
   const navigation = useNavigation();
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Add a state for authentication status
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: false, // Hide the header for this screen
+    });
+  }, [navigation]);
 
   const navigateToAddItemScreen = () => {
     navigation.navigate('addItemScreen');

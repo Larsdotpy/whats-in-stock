@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "whats_in_stock",
-    "slug": "whats_in_stock",
+    "name": "HomeStock",
+    "slug": "HomeStock",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -15,16 +15,23 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.HomeStock"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.lars_dev1996.HomeStock"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ddb1f546-9276-4302-b2ab-5a4c358d45ed"
+      }
     }
   }
 }

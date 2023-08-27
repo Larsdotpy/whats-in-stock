@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, StyleSheet, TextInput, TouchableOpacity, Text, Dimensions, Image, Alert } from 'react-native';
 import { apiPostCall } from '../utils/PostCall';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/native';
 
 const AddItemScreen = () => {
   const [productType, setProductType] = useState('');
@@ -11,6 +12,13 @@ const AddItemScreen = () => {
   const [productTypeValid, setProductTypeValid] = useState(false);
   const [amountValid, setAmountValid] = useState(false);
   const [successMessageVisible, setSuccessMessageVisible] = useState(false);
+  const navigation = useNavigation();
+
+  React.useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: false, // Hide the header for this screen
+    });
+  }, [navigation]);
 
   const handleAddItem = () => {
     if (productTypeValid && amountValid) {
@@ -18,7 +26,7 @@ const AddItemScreen = () => {
         .then((data) => {
           if (data) {
             const products = JSON.parse(data);
-            const existingProduct = products.find((product) => product.productType === productType);
+            const existingProduct = products.find((product: { productType: string; }) => product.productType === productType);
 
             if (existingProduct) {
               Alert.alert(
@@ -54,7 +62,7 @@ const AddItemScreen = () => {
                 setAmount('');
                 setShop('');
                 setLink('');
-              }, 2000);
+              }, 500);
             }
           }
         })
@@ -176,7 +184,8 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     justifyContent: 'center',
     alignItems: 'flex-start',
-    marginBottom: 20,
+    marginBottom: 30,
+    top: '5%'
   },
   gridImageContainer: {
     width: 24,
@@ -185,11 +194,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 25,
+    top: '4%'
   },
   gridImage: {
     width: 60,
-    height: (screenWidth - 250) / 2.5,
-    marginTop: 20
+    height: (screenWidth - 250) / 2,
+    marginTop: 27
   },
   gridText: {
     fontSize: 20,
@@ -197,7 +207,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     position: 'absolute',
-    top: 630,
+    top: '90%',
     width: '100%',
     alignItems: 'center',
   },
