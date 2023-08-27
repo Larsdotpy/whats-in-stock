@@ -1,4 +1,4 @@
-![Simulator Screen Shot - iPhone 14 Pro - 2023-08-27 at 16 12 34](https://github.com/Larsdotpy/whats-in-stock/assets/103534528/28cdd03c-a689-4a08-b52c-83a7bbdace6c)# HomeStock
+# HomeStock
 Introducing HomeStock: Your Ultimate Household Inventory and Shopping Companion
 
 HomeStock is a revolutionary application designed to streamline your household management by effortlessly tracking your inventory and simplifying your shopping experience. With HomeStock, keeping an organized record of your household items, whether they're perishable goods, cleaning supplies, toiletries, or other essentials, has never been easier.
@@ -25,33 +25,33 @@ Experience the convenience and harmony that HomeStock brings to your household. 
 
 ## Login screen
 As of now, only authenticated users are allowed access.
-<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/37f584d7-489c-46dd-9e27-a7cc73a5d01b" width="500" height="1000">
+<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/37f584d7-489c-46dd-9e27-a7cc73a5d01b">
 
 
 ## Main screen
-<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/667ec31a-4d57-4af6-a40e-2fafaed35ff6" width="500" height="1000">
+<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/667ec31a-4d57-4af6-a40e-2fafaed35ff6">
 
 ## Add item screen
-<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/d8ee59b4-7361-403c-b352-62bf7593a798" width="500" height="1000">
+<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/d8ee59b4-7361-403c-b352-62bf7593a798">
 
-<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/a339d1cc-672e-4b12-88cb-c100e27ec2bd" width="500" height="1000">
+<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/a339d1cc-672e-4b12-88cb-c100e27ec2bd">
 
 ## Shopping list screen
-<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/228c8594-993e-45de-b39b-916cde268680" width="500" height="1000">
+<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/228c8594-993e-45de-b39b-916cde268680">
 
-<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/9d28ce3f-7dca-437a-b5b6-e8dc765e4231" width="500" height="1000">
+<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/9d28ce3f-7dca-437a-b5b6-e8dc765e4231">
 
 ## Current stock screen
-<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/fb4b5292-1cc4-48a0-b3fe-911a5978d419" width="500" height="1000">
+<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/fb4b5292-1cc4-48a0-b3fe-911a5978d419">
 
 ### Filtering by shop
-<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/14f85d22-13ec-47b9-98e4-3e879e684539" width="500" height="1000">
+<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/14f85d22-13ec-47b9-98e4-3e879e684539">
 
 ### Filtering by quantity
-<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/cf26ac55-d77b-4488-80e8-1d8ca5614337" width="500" height="1000">
+<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/cf26ac55-d77b-4488-80e8-1d8ca5614337">
 
 ### Filtering by product name
-<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/8ad4f093-6132-4cf2-9572-ef7c525311bd" width="500" height="1000">
+<img src="https://github.com/Larsdotpy/whats-in-stock/assets/103534528/8ad4f093-6132-4cf2-9572-ef7c525311bd">
 
 
 
